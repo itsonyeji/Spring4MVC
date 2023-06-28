@@ -27,7 +27,8 @@ public class IndexController {
         //로거 출력. info는 일상적인 것만 출력
         logger.info("Hello, World! from Logger!");
 
-        return "index";
+        //return "index";       //jsp view resolver
+        return "index.tiles";         //tiles
     }
 
 }
