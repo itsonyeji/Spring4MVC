@@ -3,10 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>세미 프로젝트</title>
 </head>
 <body>
-<h1>${sayHello}</h1>
+<header><h1>SemiProject</h1></header>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/member/join">회원가입</a></li>
+        <li><a href="/member/login">로그인</a></li>
+        <li><a href="/board/list">게시판</a></li>
+        <li><a href="/member/myinfo">회원정보</a></li>
+
+    </ul>
+</nav>
+<main></main>
+<footer>
+    <hr>
+    <div>copyright &copy; 2023. ityeji. All Rights Reserved. </div>
+</footer>
+
 <div>
     <img src="/assets/img/images.png"/>
 </div>
