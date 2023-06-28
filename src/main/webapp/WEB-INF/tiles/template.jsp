@@ -11,13 +11,13 @@
 </head>
 
 <body>
-<div id="container">
-    <tiles:insertAttribute name="header"/>
-<%--    header라는 이름의 것을 여기 넣는다 --%>
-    <tiles:insertAttribute name="main" />
-    <tiles:insertAttribute name="footer"/>
+    <div id="container">
+        <tiles:insertAttribute name="header"/>
+    <%--    header라는 이름의 것을 여기 넣는다 --%>
+        <tiles:insertAttribute name="main" />
+        <tiles:insertAttribute name="footer"/>
 
-</div>
+    </div>
 </body>
 
 </html>
