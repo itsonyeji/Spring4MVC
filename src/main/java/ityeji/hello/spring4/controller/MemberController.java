@@ -1,7 +1,11 @@
 package ityeji.hello.spring4.controller;
 
+
+import ityeji.hello.spring4.model.Member;
+import ityeji.hello.spring4.service.MemberService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MemberController {
 
+
     private Logger logger= LogManager.getLogger(MemberController.class);
+
+    @Autowired
+    MemberService msrv;
 
     @RequestMapping(value = "/member/join", method = RequestMethod.GET)
     public String join(Model m){
@@ -21,11 +29,16 @@ public class MemberController {
         return "member/join.tiles";         //tiles
     }
     @RequestMapping(value = "/member/join", method = RequestMethod.POST)
-    public String joinok(Model m){
-
+    public String joinok(Member m){
         logger.info("member/joinok 호출!");
+        String viewName="/member/fail";
 
-        return "redirect:/member/login";         //member/login 호출
+        if(msrv.saveMember(m))
+            viewName="redirect:/member/login";     //회원가입 처리
+/*        logger.info(m.getUserid());
+        logger.info(m.getEmail());*/
+
+        return viewName;         //member/login 호출
     }
 
     @RequestMapping(value = "/member/login", method=RequestMethod.GET)
