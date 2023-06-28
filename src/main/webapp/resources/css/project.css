@@ -1,0 +1,19 @@
+/*페이지 공통*/
+#container {width: 960px; border: 1px solid red; margin: 0 auto}
+/*마진으로 가운데 정렬하기*/
+
+nav {margin-top: 50px}
+nav ul{list-style: none; padding: 0;}
+nav li{display: inline-block; padding: 0 65px;}
+
+a:link{color: black; text-decoration: none; font-weight: bold}
+a:visited{color: black;}    /*링크 눌렀을떄 보라색으로 안바뀌고 검은색 유지*/
+a:hover{color: red; text-decoration: underline; }
+a:active{color:orange}      /*링크 누를때*/
+
+.hr{color: black; height: 2px; opacity: 100%}
+/*부트스트랩에 기본 opacity 25%로 잡혀있어서*/
+
+main{min-height: 500px}
+
+.copy{text-align: center}
