@@ -6,7 +6,14 @@ template.jsp<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/member/join">회원가입</a></li>
+
+            <%-- 세션 변수에 값이 비어있다면. empty가 세련된 방법. null은 구식--%>
+            <c:if test="${empty sessionScope.member}">
             <li><a href="/member/login">로그인</a></li>
+            </c:if>
+            <c:if test="${not empty sessionScope.member}">
+            <li><a href="/member/logout">로그아웃</a></li>
+            </c:if>
             <li><a href="/board/list">게시판</a></li>
             <li><a href="/member/myinfo">회원정보</a></li>
 
