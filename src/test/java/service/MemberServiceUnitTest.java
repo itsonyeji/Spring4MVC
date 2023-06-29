@@ -12,6 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 //자동으로 불러오기
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,5 +37,12 @@ public class MemberServiceUnitTest {
         m.setPasswd("987xyz");
         /* assertEquals(테스트메서드, 검증값) */
         assertEquals(msrv.loginMember(m),true);
+    }
+
+    @Test
+    public void readOneMember() throws Exception{
+        String userid="abc123";
+        /* assertEquals(테스트메서드, 검증값) */
+        assertNotNull(msrv.readOneMember(userid));
     }
 }
