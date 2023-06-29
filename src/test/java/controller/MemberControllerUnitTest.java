@@ -43,7 +43,7 @@ public class MemberControllerUnitTest {
     @Test
     @Transactional
     public void joinokTest() throws Exception {
-        //post 방법으로 불러옴
+        //post 방법으로 요청
         //param을 통해 실제 적을 값을 넣어준다.
         mockMvc.perform(post("/member/join")
                         .param("userid", "abc123a")
@@ -52,5 +52,13 @@ public class MemberControllerUnitTest {
                         .param("email", "abc123a@987xzy.co.kr"))
                 .andExpect(redirectedUrl("/member/login"));
         //MemberController를 보면 joinok는 return="redirect:/member/login"값이다.
+    }
+
+    @Test
+    public void loginokTest() throws Exception{
+        mockMvc.perform(post("/member/login")
+                .param("userid", "abc123")
+                .param("passwd", "987xyz"))
+                .andExpect(redirectedUrl("/member/myinfo"));
     }
 }
