@@ -41,4 +41,13 @@ public class MemberDAOUnitTest {
         //System.out.println(mdao.loginMember(m));
         assertNotNull(mdao.loginMember(m)); //null이 아닌지 묻는거
     }
+    @Test
+    public void selectOneMember() throws Exception{
+        //웹브라우저를 띄워 값을 넣어서 테스트 하는 것이 아닌 직접 넣어서 테스트를 하여 훨씬 빠르고 편리
+        String userid="abc123";
+
+        //sout은 확인하기 편하게 쓴거고 실제 검사는 밑에걸로 한다.
+        System.out.println(mdao.selectOneMember(userid));
+        assertNotNull(mdao.selectOneMember(userid)); //null이 아닌지 묻는거
+    }
 }
