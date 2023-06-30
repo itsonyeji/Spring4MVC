@@ -10,6 +10,7 @@ import org.springframework.test.context.TestExecutionListeners;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository("mdao")
 public class MemberDAOImpl implements MemberDAO{
@@ -42,10 +43,15 @@ public class MemberDAOImpl implements MemberDAO{
         //spring이 mapper를 호출. 우리가 아니라
         RowMapper<Member> mapper=new LoginMapper();
 
-        //쿼리 실행 : queryForObject(sql문, 매개변수, 매퍼)-단일값 반환(결과가 하나)
-
-        m=jdbcTemplate.queryForObject(loginSQL, params, mapper);
+        //쿼리 실행 : queryForObject(sql문, 매개변수, 매퍼) - 단일값 반환(결과가 하나)
+        //단, 결과가 없거나 둘 이상인 경우 예외 발생! - 다루기 번거로움
+        // => JDK8 기능 중 Optional을 활용하거나
+        // => query(sql문, 매개변수, 매퍼) - 리스트 기반 다중값 반환 (select 문에서 많이 쓰임)
+        //m=jdbcTemplate.queryForObject(loginSQL, params, mapper);
+        List<Member> results=jdbcTemplate.query(loginSQL, params, mapper);
+        m=results.isEmpty() ? null : results.get(0);        // 첫번째 거 대입
         return m;
+        //하나를 고치면 다른 곳에서도 이것저것 고쳐야하니까 어떤게 효율적인지 잘 생각해서 해야함
     }
 
     private class LoginMapper implements RowMapper<Member> {
