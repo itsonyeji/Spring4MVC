@@ -14,7 +14,7 @@ template.jsp<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
             <c:if test="${not empty sessionScope.member}">
             <li><a href="/member/logout">로그아웃</a></li>
             </c:if>
-            <li><a href="/board/list">게시판</a></li>
+            <li><a href="/board/list?cpg=1">게시판</a></li>
             <li><a href="/member/myinfo">회원정보</a></li>
 
         </ul>
