@@ -28,99 +28,44 @@
             <%--            <td></td>--%><%--마찬가지로 3개를 합쳤기 때문에 두개는 없애기--%>
             <%--            <td></td>--%>
         </tr>
-            <td>1</td>
-            <td><a href="/board/view?bno=">오늘은 그묘일이에여</a></td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
-        </tr> <tr>
-            <td>1</td>
-            <td>오늘은 그묘일이에여</td>
-            <td>abc123</td>
-            <td>2023-07-01</td>
-            <td>987</td>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회</th>
         </tr>
+
+        <%-- for(Board bd : boards) --%>
+        <c:forEach items="${boards}" var="bd">
+            <tr>
+                <td>${bd.bno}</td>
+                <td><a href="/board/view?bno=${bd.bno}">${bd.title}</a></td>
+                <td>${bd.userid}</td>
+                <td>${bd.regdate}</td>
+                <td>${bd.views}</td>
+            </tr>
+            </c:forEach>
         </tbody>
     </table>
+
     <ul class="pagenation">
-        <li>이전</li>
-        <li class="cpage"><a href="?cpg=">1</a></li>
-        <li><a href="?cpg=">2</a></li>
-        <li><a href="?cpg=">3</a></li>
-        <li><a href="?cpg=">4</a></li>
-        <li><a href="?cpg=">5</a></li>
-        <li><a href="?cpg=">6</a></li>
-        <li><a href="?cpg=">7</a></li>
-        <li><a href="?cpg=">8</a></li>
-        <li><a href="?cpg=">9</a></li>
-        <li><a href="?cpg=">10</a></li>
-        <li>다음</li>
+        <c:if test="${param.cpg-1 gt 0}"> <%--greater than--%>
+            <li><a href="?cpg=${param.cpg - 1}">이전</a></li>
+        </c:if>
+
+    <%-- for(int i=0; i<10; ++i) --%>
+        <c:forEach var="i" begin="1" end="10">
+            <c:if test="${param.cpg ne i}">
+                <li><a href="?cpg=${i}">${i}</a></li>
+            </c:if>
+
+            <%--현재 페이지 식별 가능--%>
+            <c:if test="${param.cpg eq i}">
+                <li class="cpage"><a href="?cpg=${i}">${i}</a></li>
+            </c:if>
+        </c:forEach>
+            <li><a href="?cpg=${param.cpg + 1}">다음</a></li>
     </ul>
 </main>
 <script src="/assets/js/board.js"></script>
