@@ -52,7 +52,7 @@ public class MemberController {
     }
     @RequestMapping(value = "/member/login", method=RequestMethod.POST)
     public String loginok(Member m, HttpSession sess){
-        String viewName="redirect:member/loginfail";
+        String viewName="redirect:/member/loginfail";
 
         logger.info("member/loginok 호출!");
         if(msrv.loginMember(m)) {
@@ -83,5 +83,12 @@ public class MemberController {
 
             return "redirect:/";         //tiles
         }
+
+    @RequestMapping("/member/loginfail")
+    public String loginfail(){
+        logger.info("member/loginfail 호출!");
+
+        return "member/loginfail.tiles";
+    }
 
 }
