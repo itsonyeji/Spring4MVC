@@ -1,5 +1,6 @@
 package ityeji.hello.spring4.controller;
 
+import ityeji.hello.spring4.model.Board;
 import ityeji.hello.spring4.service.BoardService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,6 +24,8 @@ public class BoardController {
 
         logger.info("board/list 호출!");
         m.addAttribute("boards",bsrv.readBoard(cpg));
+        //m.addAttribute("psnum",bsrv.readBoard(cpg));    // pagination start num
+        //m.addAttribute("allpg",bsrv.readBoard(cpg));    // 총페이지수
 
 
         return "board/list.tiles";
@@ -37,9 +40,10 @@ public class BoardController {
     }
 
     @GetMapping("/view")
-    public String view(Model m){
-
+    public String view(Model m, String bno){
         logger.info("board/view 호출!");
+        Board board = bsrv.readOneBoard(bno);
+        m.addAttribute("board", board);
 
         return "board/view.tiles";
     }
