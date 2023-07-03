@@ -66,10 +66,12 @@ public class MemberController {
     public String myinfo(Model m, HttpSession sess){
         logger.info("member/myinfo 호출!");
 
+        /*
         //조인처럼 위에 쓸수 없는 이유 : 맨밑 return을 만나야 info.jsp로 가서 실행하는데 중간 getAttribute에서 막힌다.
-        //세션객체가 없을 경우 로그인 페이지로 이동
+        //세션객체가 없을 경우 로그인 페이지로 이동 -> aop로 처리
         if (sess.getAttribute("member")==null)
             return "redirect:/member/login";
+            */
 
         String userid=((Member) sess.getAttribute("member")).getUserid();
         m.addAttribute("member", msrv.readOneMember(userid));
