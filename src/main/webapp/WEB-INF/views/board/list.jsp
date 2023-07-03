@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 <main>
     <h2>게시판</h2>
     <table class="board">
@@ -42,7 +45,8 @@
                 <td>${bd.bno}</td>
                 <td><a href="/board/view?bno=${bd.bno}">${bd.title}</a></td>
                 <td>${bd.userid}</td>
-                <td>${bd.regdate}</td>
+                <td>${fn:substring(bd.regdate, 0, 10)}</td>    <%-- 첫번째부터 10번째 문자까지 --%>
+<%--                <td>${bd.regdate}</td>--%>
                 <td>${bd.views}</td>
             </tr>
             </c:forEach>
@@ -55,7 +59,7 @@
         </c:if>
 
     <%-- for(int i=0; i<10; ++i) --%>
-        <c:forEach var="i" begin="1" end="10">
+        <c:forEach var="i" begin="${psnum}" end="${psnum+9}">
             <c:if test="${param.cpg ne i}">
                 <li><a href="?cpg=${i}">${i}</a></li>
             </c:if>
