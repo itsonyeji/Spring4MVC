@@ -22,4 +22,11 @@ public class BoardServiceImpl implements BoardService{
 
         return bdao.selectOneBoard(bno);
     }
+
+    @Override
+    public boolean saveBoard(Board bd) {
+        boolean isSaved = false;
+        if(bdao.insertBoard(bd)>0) isSaved = true;
+        return isSaved;
+    }
 }
