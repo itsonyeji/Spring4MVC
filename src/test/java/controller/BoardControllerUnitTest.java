@@ -51,5 +51,17 @@ public class BoardControllerUnitTest {
         System.out.println(mvcResult.getModelAndView());
     }
 
+    @Test
+    @Transactional
+    public void writeokTest() throws Exception {
+        mockMvc.perform(post("/board/write")
+                        .param("title", "테스트")
+                        .param("userid", "abc123")
+                        .param("contents", "냉무"))
+                .andExpect(status().is3xxRedirection()) //joinoktest에 이거 하나 더 추가한것
+                //.andExpect(view().name("redirect:/board/list"));
+                .andExpect(redirectedUrl("/board/list"));
+    }
+
 
 }
