@@ -3,9 +3,14 @@
 	   xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
 	   xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context
+		https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		https://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- aop가 안떠서 수동으로 추가함 -->
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -41,7 +46,12 @@
 
 
 	<context:component-scan base-package="ityeji.hello.spring4" />
-	
+
+	<!-- Enables the Spring AOP programming model -->
+	<aop:aspectj-autoproxy/>
+
+
+
 
 
 </beans>
