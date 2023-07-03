@@ -61,3 +61,4 @@ form input {padding: 5px}
 #contents, #view span {border: 1px solid #eeeeee;
     display: inline-block; width: 400px; }
 #contents{min-height: 350px; white-space: pre;}
+/*white-space: pre 본문에 줄바꿈 적용.*/
